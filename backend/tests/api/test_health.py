@@ -1,0 +1,15 @@
+from fastapi.testclient import TestClient
+
+from nexusdocs.main import app
+
+client = TestClient(app)
+
+
+def test_health_check_returns_healthy_status() -> None:
+    response = client.get("/health")
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "status": "healthy",
+        "service": "nexusdocs-api",
+    }
