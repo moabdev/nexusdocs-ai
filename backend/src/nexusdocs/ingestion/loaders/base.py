@@ -1,6 +1,12 @@
 from typing import Protocol
 
-from nexusdocs.ingestion.domain.models import DocumentContent, SourceDocument
+from nexusdocs.ingestion.domain.models import (
+    DocumentContent,
+    SourceDocument,
+    TabularDocument,
+)
+
+type IngestionResult = DocumentContent | TabularDocument
 
 
 class DocumentLoader(Protocol):
@@ -10,6 +16,6 @@ class DocumentLoader(Protocol):
         """Return whether this loader supports the given source."""
         ...
 
-    def load(self, source: SourceDocument) -> DocumentContent:
+    def load(self, source: SourceDocument) -> IngestionResult:
         """Extract and return the document content."""
         ...
