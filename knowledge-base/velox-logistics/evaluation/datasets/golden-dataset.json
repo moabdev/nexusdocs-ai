@@ -1,0 +1,473 @@
+{
+  "dataset": {
+    "name": "NexusDocs AI Golden Evaluation Dataset",
+    "version": "1.0.0",
+    "language": "en",
+    "description": "Deterministic evaluation cases for retrieval, grounded generation, version awareness, structured-data reasoning, and abstention.",
+    "case_count": 30
+  },
+  "cases": [
+    {
+      "id": "EVAL-001",
+      "category": "single_document",
+      "question": "What is the current standard compensation ceiling for an eligible shipment claim?",
+      "expected_answer": "R$ 2,000 per shipment.",
+      "source_documents": [
+        "KB-003"
+      ],
+      "must_contain": [
+        "R$ 2,000"
+      ],
+      "must_not_contain": [
+        "R$ 1,500",
+        "R$ 1,000"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-002",
+      "category": "single_document",
+      "question": "How quickly should initial claim validation normally occur?",
+      "expected_answer": "Within 2 business days after submission.",
+      "source_documents": [
+        "KB-004"
+      ],
+      "must_contain": [
+        "2 business days"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-003",
+      "category": "single_document",
+      "question": "How long can a complex claim investigation take?",
+      "expected_answer": "Up to 10 business days.",
+      "source_documents": [
+        "KB-004"
+      ],
+      "must_contain": [
+        "10 business days"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-004",
+      "category": "single_document",
+      "question": "What does DELIVERY_EXCEPTION mean?",
+      "expected_answer": "It indicates a condition that prevented normal delivery progression.",
+      "source_documents": [
+        "KB-005",
+        "KB-006"
+      ],
+      "must_contain": [
+        "delivery"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-005",
+      "category": "semantic",
+      "question": "The website says my box arrived, but I cannot find it anywhere. What should I do?",
+      "expected_answer": "Check likely delivery locations and recipients, then allow 24 hours from the recorded delivery timestamp before a formal non-delivery investigation is opened.",
+      "source_documents": [
+        "KB-005",
+        "KB-006"
+      ],
+      "must_contain": [
+        "24 hours"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-006",
+      "category": "semantic",
+      "question": "My parcel hasn't moved in tracking for days. Does that mean Velox lost it?",
+      "expected_answer": "No. A tracking gap does not automatically mean loss; Operations may investigate, and potential loss classification depends on the active policy threshold.",
+      "source_documents": [
+        "KB-005",
+        "KB-006",
+        "KB-003"
+      ],
+      "must_contain": [
+        "not automatically"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-007",
+      "category": "semantic",
+      "question": "Do I get two thousand reais automatically if Velox loses my order?",
+      "expected_answer": "No. R$ 2,000 is the current maximum standard compensation ceiling, not an automatic payment; compensation depends on documented eligible loss.",
+      "source_documents": [
+        "KB-003",
+        "KB-004",
+        "KB-006"
+      ],
+      "must_contain": [
+        "R$ 2,000",
+        "not automatic"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-008",
+      "category": "multi_document",
+      "question": "A shipment is potentially lost. Who performs the operational trace, and what is the current maximum standard compensation ceiling?",
+      "expected_answer": "Operations performs the operational trace, and the current maximum standard compensation ceiling is R$ 2,000 per shipment.",
+      "source_documents": [
+        "KB-004",
+        "KB-003"
+      ],
+      "must_contain": [
+        "Operations",
+        "R$ 2,000"
+      ],
+      "must_not_contain": [
+        "R$ 1,500",
+        "R$ 1,000"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-009",
+      "category": "multi_document",
+      "question": "Tracking says DELIVERED but the customer did not receive the parcel. How long should they wait, who reviews operational evidence afterward, and how long do they currently have to file the claim?",
+      "expected_answer": "They should allow 24 hours from the recorded delivery timestamp. If still missing, Customer Experience may open a case and Operations reviews proof-of-delivery and operational evidence. The current claim filing deadline is 15 calendar days.",
+      "source_documents": [
+        "KB-005",
+        "KB-004",
+        "KB-003"
+      ],
+      "must_contain": [
+        "24 hours",
+        "Operations",
+        "15 calendar days"
+      ],
+      "must_not_contain": [
+        "20 calendar days",
+        "30 calendar days"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-010",
+      "category": "multi_document",
+      "question": "For a damaged shipment, what evidence should the customer preserve and what policy determines the compensation ceiling?",
+      "expected_answer": "The customer should preserve the shipment, contents, and packaging and provide damage photographs when reasonably available. The ACTIVE Shipping Policy determines the standard compensation ceiling.",
+      "source_documents": [
+        "KB-004",
+        "KB-003"
+      ],
+      "must_contain": [
+        "packaging",
+        "ACTIVE Shipping Policy"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-011",
+      "category": "temporal_versioning",
+      "question": "How long do I currently have to file an eligible shipping claim?",
+      "expected_answer": "15 calendar days.",
+      "source_documents": [
+        "KB-003"
+      ],
+      "must_contain": [
+        "15 calendar days"
+      ],
+      "must_not_contain": [
+        "20 calendar days",
+        "30 calendar days"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-012",
+      "category": "temporal_versioning",
+      "question": "What was the shipping claim deadline under policy version 2.0?",
+      "expected_answer": "20 calendar days.",
+      "source_documents": [
+        "KB-002"
+      ],
+      "must_contain": [
+        "20 calendar days"
+      ],
+      "must_not_contain": [
+        "15 calendar days",
+        "30 calendar days"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-013",
+      "category": "temporal_versioning",
+      "question": "What was the claim deadline in the initial Shipping Policy v1.0?",
+      "expected_answer": "30 calendar days.",
+      "source_documents": [
+        "KB-001"
+      ],
+      "must_contain": [
+        "30 calendar days"
+      ],
+      "must_not_contain": [
+        "15 calendar days",
+        "20 calendar days"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-014",
+      "category": "conflicting_information",
+      "question": "I found documents saying claims can be filed within 30, 20, and 15 days. Which deadline applies to current shipments?",
+      "expected_answer": "15 calendar days applies to current shipments because Shipping Policy v3.0 (KB-003) is ACTIVE; v1.0 and v2.0 are SUPERSEDED historical policies.",
+      "source_documents": [
+        "KB-001",
+        "KB-002",
+        "KB-003"
+      ],
+      "must_contain": [
+        "15 calendar days",
+        "ACTIVE",
+        "SUPERSEDED"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-015",
+      "category": "conflicting_information",
+      "question": "Should NexusDocs use the R$ 1,500 or R$ 2,000 compensation limit for a current standard claim?",
+      "expected_answer": "R$ 2,000. The R$ 1,500 ceiling belongs to superseded Shipping Policy v2.0; active v3.0 sets R$ 2,000.",
+      "source_documents": [
+        "KB-002",
+        "KB-003"
+      ],
+      "must_contain": [
+        "R$ 2,000"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-016",
+      "category": "structured_data",
+      "question": "Which region had the highest average delivery delay during Q2 2026?",
+      "expected_answer": "Northeast, at approximately 2.16 delay days on average.",
+      "source_documents": [
+        "KB-008"
+      ],
+      "must_contain": [
+        "Northeast"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-017",
+      "category": "structured_data",
+      "question": "Which distribution center recorded the most DELIVERY_EXCEPTION shipments during Q2 2026?",
+      "expected_answer": "DC-PE-01, with 6 DELIVERY_EXCEPTION shipments.",
+      "source_documents": [
+        "KB-008"
+      ],
+      "must_contain": [
+        "DC-PE-01",
+        "6"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-018",
+      "category": "structured_data",
+      "question": "Was the Northeast's Q2 2026 average delay greater than the Southeast's?",
+      "expected_answer": "Yes. Northeast averaged about 2.16 delay days versus about 0.44 for Southeast.",
+      "source_documents": [
+        "KB-008"
+      ],
+      "must_contain": [
+        "Yes",
+        "Northeast"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-019",
+      "category": "single_document",
+      "question": "Which backend technologies are used for core transactional services and specialized AI workloads?",
+      "expected_answer": "Java 21 with Spring Boot is used for core transactional/logistics services, while Python is used for AI, analytics, document processing, and specialized automation workloads.",
+      "source_documents": [
+        "KB-007"
+      ],
+      "must_contain": [
+        "Java 21",
+        "Spring Boot",
+        "Python"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-020",
+      "category": "single_document",
+      "question": "Why isn't Redis the source of truth for tracking history?",
+      "expected_answer": "Redis is a cache for low-latency data that may tolerate bounded staleness; authoritative tracking records are persisted in PostgreSQL and the system must recover from cache misses or Redis outages.",
+      "source_documents": [
+        "KB-007"
+      ],
+      "must_contain": [
+        "PostgreSQL",
+        "Redis"
+      ],
+      "must_not_contain": [
+        "Redis is the source of truth"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-021",
+      "category": "semantic",
+      "question": "How does the platform stop the same Kafka message from changing tracking twice?",
+      "expected_answer": "Consumers implement application-level idempotency using a unique event identifier or business idempotency key stored durably; an already processed event must not reapply the business effect.",
+      "source_documents": [
+        "KB-007"
+      ],
+      "must_contain": [
+        "idempot"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-022",
+      "category": "single_document",
+      "question": "What happens after a Kafka consumer exhausts its retry policy?",
+      "expected_answer": "The repeatedly failing event may be routed to a dead-letter topic (DLQ) with diagnostic context, monitored, remediated, and replayed through an authorized procedure.",
+      "source_documents": [
+        "KB-007"
+      ],
+      "must_contain": [
+        "DLQ"
+      ],
+      "must_not_contain": [
+        "retry forever"
+      ],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-023",
+      "category": "single_document",
+      "question": "What observability technologies does the platform use?",
+      "expected_answer": "OpenTelemetry for instrumentation and tracing, Prometheus for metrics, and Grafana for dashboards and visualization.",
+      "source_documents": [
+        "KB-007"
+      ],
+      "must_contain": [
+        "OpenTelemetry",
+        "Prometheus",
+        "Grafana"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-024",
+      "category": "multi_document",
+      "question": "A customer asks why their missing-package case is not immediately treated as a lost shipment even though tracking says DELIVERED. Explain the process.",
+      "expected_answer": "A DELIVERED-but-not-received case first follows the 24-hour waiting and verification procedure. If still unlocated, Customer Experience may open a non-delivery case and Operations reviews delivery evidence. Potential loss classification is separate and depends on the operational loss threshold in the ACTIVE Shipping Policy.",
+      "source_documents": [
+        "KB-005",
+        "KB-004",
+        "KB-003"
+      ],
+      "must_contain": [
+        "24 hours",
+        "Operations",
+        "ACTIVE Shipping Policy"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-025",
+      "category": "unanswerable",
+      "question": "What is the CEO of Velox Logistics' mobile phone number?",
+      "expected_answer": "The knowledge base does not provide this information.",
+      "source_documents": [],
+      "must_contain": [],
+      "must_not_contain": [],
+      "answerable": false
+    },
+    {
+      "id": "EVAL-026",
+      "category": "unanswerable",
+      "question": "What was Velox Logistics' total revenue in 2025?",
+      "expected_answer": "The knowledge base does not provide 2025 company revenue.",
+      "source_documents": [],
+      "must_contain": [],
+      "must_not_contain": [],
+      "answerable": false
+    },
+    {
+      "id": "EVAL-027",
+      "category": "unanswerable",
+      "question": "What password does the production PostgreSQL database use?",
+      "expected_answer": "The knowledge base does not contain or expose production credentials.",
+      "source_documents": [],
+      "must_contain": [],
+      "must_not_contain": [],
+      "answerable": false
+    },
+    {
+      "id": "EVAL-028",
+      "category": "unanswerable",
+      "question": "How many employees work at Velox Logistics today?",
+      "expected_answer": "The knowledge base does not provide a current employee count.",
+      "source_documents": [],
+      "must_contain": [],
+      "must_not_contain": [],
+      "answerable": false
+    },
+    {
+      "id": "EVAL-029",
+      "category": "conflicting_information",
+      "question": "An old document says Express delivery takes 2-3 business days. What is the current Express target?",
+      "expected_answer": "The current target is 1-2 business days under active Shipping Policy v3.0. The 2-3 day target belongs to superseded v1.0.",
+      "source_documents": [
+        "KB-001",
+        "KB-003"
+      ],
+      "must_contain": [
+        "1-2 business days"
+      ],
+      "must_not_contain": [],
+      "answerable": true
+    },
+    {
+      "id": "EVAL-030",
+      "category": "multi_document",
+      "question": "For a current lost shipment worth R$ 850 with valid evidence, is the R$ 2,000 ceiling the amount automatically paid?",
+      "expected_answer": "No. R$ 2,000 is only the maximum standard ceiling. If the documented eligible loss is R$ 850, compensation is limited to the documented eligible value, subject to exclusions and investigation.",
+      "source_documents": [
+        "KB-003",
+        "KB-004"
+      ],
+      "must_contain": [
+        "R$ 850",
+        "R$ 2,000"
+      ],
+      "must_not_contain": [
+        "automatically paid R$ 2,000"
+      ],
+      "answerable": true
+    }
+  ]
+}
