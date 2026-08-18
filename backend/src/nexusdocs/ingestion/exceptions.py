@@ -12,3 +12,7 @@ class UnsupportedDocumentError(DocumentIngestionError):
 
 class EmptyDocumentError(DocumentIngestionError):
     """Raised when no usable textual content can be extracted."""
+
+
+class DocumentLoaderNotFoundError(DocumentIngestionError):
+    """Raised when no registered loader supports a source document."""
