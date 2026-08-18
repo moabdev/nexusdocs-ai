@@ -1,0 +1,9 @@
+document_id,title,version,status,effective_date,expiration_date,department,classification,format
+KB-001,Shipping Policy,1.0,SUPERSEDED,2024-01-01,2024-12-31,Operations,INTERNAL,pdf
+KB-002,Shipping Policy,2.0,SUPERSEDED,2025-01-01,2025-12-31,Operations,INTERNAL,pdf
+KB-003,Shipping Policy,3.0,ACTIVE,2026-01-01,,Operations,INTERNAL,pdf
+KB-004,Claims and Refund Policy,2.1,ACTIVE,2026-02-01,,Customer Experience,INTERNAL,pdf
+KB-005,Tracking Operations Manual,4.2,ACTIVE,2026-03-15,,Operations,INTERNAL,pdf
+KB-006,Customer Service FAQ,3.4,ACTIVE,2026-04-01,,Customer Experience,PUBLIC,pdf
+KB-007,Technology Platform Handbook,2.3,ACTIVE,2026-05-01,,Technology,CONFIDENTIAL,pdf
+KB-008,Delivery Performance Dataset,1.0,ACTIVE,2026-01-01,,Analytics,CONFIDENTIAL,csv
