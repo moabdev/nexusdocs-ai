@@ -1,0 +1,14 @@
+[project]
+name = "nexusdocs"
+version = "0.1.0"
+description = "Backend service for the NexusDocs AI enterprise knowledge intelligence platform."
+readme = "README.md"
+authors = [
+    { name = "moabdev" }
+]
+requires-python = ">=3.12,<3.13"
+dependencies = []
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
