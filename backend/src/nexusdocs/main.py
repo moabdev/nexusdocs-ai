@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 
 from nexusdocs.api.routes.health import router as health_router
+from nexusdocs.api.routes.query import router as query_router
 
 app = FastAPI(
     title="NexusDocs AI API",
@@ -9,3 +10,4 @@ app = FastAPI(
 )
 
 app.include_router(health_router)
+app.include_router(query_router)
