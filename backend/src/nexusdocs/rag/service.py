@@ -1,6 +1,6 @@
 from nexusdocs.generation.base import LLMProvider
 from nexusdocs.rag.models import RagResponse, RagSource
-from nexusdocs.retrieval.service import RetrievalService
+from nexusdocs.retrieval.base import RetrievalProvider
 
 
 class RagService:
@@ -10,7 +10,7 @@ class RagService:
 
     def __init__(
         self,
-        retrieval_service: RetrievalService,
+        retrieval_service: RetrievalProvider,
         llm_provider: LLMProvider,
     ) -> None:
         self._retrieval_service = retrieval_service
@@ -36,7 +36,10 @@ class RagService:
                 f"Chunk: {result.chunk_id}\n"
                 f"Content:\n{result.text}"
             )
-            for index, result in enumerate(results, start=1)
+            for index, result in enumerate(
+                results,
+                start=1,
+            )
         )
 
         answer = self._llm_provider.generate(
