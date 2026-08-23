@@ -4,7 +4,6 @@ from fastapi import FastAPI
 from nexusdocs.api.routes.health import router as health_router
 from nexusdocs.api.routes.query import router as query_router
 
-
 load_dotenv()
 
 
