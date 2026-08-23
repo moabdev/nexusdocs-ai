@@ -6,9 +6,7 @@ from nexusdocs.retrieval.base import RetrievalProvider
 class RagService:
     """Orchestrate retrieval and grounded answer generation."""
 
-    FALLBACK_MESSAGE = (
-        "Não encontrei essa informação nos documentos disponíveis."
-    )
+    FALLBACK_MESSAGE = "Não encontrei essa informação nos documentos disponíveis."
 
     def __init__(
         self,
