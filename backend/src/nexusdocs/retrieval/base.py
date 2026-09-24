@@ -4,11 +4,11 @@ from nexusdocs.indexing.domain.models import SearchResult
 
 
 class RetrievalProvider(Protocol):
-    """Contract implemented by retrieval services."""
+    """Contract implemented by retrieval providers."""
 
     def retrieve(
         self,
         question: str,
     ) -> tuple[SearchResult, ...]:
-        """Retrieve relevant document chunks for a question."""
+        """Retrieve relevant knowledge-base chunks for a question."""
         ...
