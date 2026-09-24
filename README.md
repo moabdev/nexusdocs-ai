@@ -27,6 +27,8 @@ NexusDocs AI aims to evolve beyond a traditional "chat with PDF" application by 
 - CI/CD
 - Cloud Deployment
 
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e6a9df17-8628-40b8-a83a-f9ec8bd4bd37" />
+
 ## Architecture
 
 Architecture documentation will be maintained under [`docs/architecture`](docs/architecture).
