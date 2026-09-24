@@ -1,8 +1,8 @@
 """Ingest knowledge-base documents into the Qdrant vector store."""
 
 import os
-from pathlib import Path
 import sys
+from pathlib import Path
 
 from dotenv import load_dotenv
 from qdrant_client import QdrantClient
